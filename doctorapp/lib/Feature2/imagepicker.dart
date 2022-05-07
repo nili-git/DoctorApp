@@ -60,8 +60,12 @@ class CameraWidgetState extends State{
                   padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                   
                   child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                    shape: const RoundedRectangleBorder(
+                       borderRadius:  BorderRadius.only(
+                   bottomLeft: Radius.circular(20.0),
+                       bottomRight: Radius.circular(20.0),
+                   ),
+                     // borderRadius: BorderRadius.circular(12),
                       ),
                     margin: const EdgeInsets.all(40),
                     child:( imageFile==null)?const Text("", ): Image.file( File(  imageFile!.path)),
@@ -108,95 +112,3 @@ class CameraWidgetState extends State{
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'dart:io';
-
-// import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
-
-
-// class ImagePicker extends StatefulWidget {
-//   const ImagePicker({ Key? key }) : super(key: key);
-
-//   @override
-//   State<ImagePicker> createState() => _ImagePickerState();
-// }
-
-// class _ImagePickerState extends State<ImagePicker> {
-// late File imageFile;
-
-//   void _getFromGallery() async {
-//    PickedFile pickedFile = await ImagePicker().getImage(
-//       source: ImageSource.gallery,
-//       maxWidth: 1800,
-//       maxHeight: 1800,
-//     );
-//     if (pickedFile != null) {
-//       setState(() {
-//         imageFile = File(pickedFile.path);
-//       });
-//     }
-//   }
-   
-//   @override
-//   Widget build(BuildContext context) {
-//     return  Scaffold(
-//       backgroundColor: Colors.white,
-//        appBar: AppBar(
-//           title:  const Text("Image Picker"),
-//         ),
-        
-
-//           body: Container(
-          
-//             // ignore: unnecessary_null_comparison
-//             child: imageFile == null
-//                 ? Container(
-//               alignment: Alignment.center,
-//               child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: <Widget>[
-//                   MaterialButton(
-//                     color: Colors.greenAccent,
-//                     onPressed: () {
-//                       _getFromGallery();
-//                     },
-//                     child: const Text("PICK FROM GALLERY"),
-//                   ),
-//                   Container(
-//                     height: 40.0,
-//                   ),
-//                   // MaterialButton(
-//                   //   color: Colors.lightGreenAccent,
-//                   //   onPressed: () {
-//                   //   //  _getFromCamera();
-//                   //   },
-//                   //   child: const  Text("PICK FROM CAMERA"),
-//                   // ),
-//                 ],
-//               ),
-//             ): Container(
-//               child: Image.file(
-//                 imageFile,
-//                 fit: BoxFit.cover,
-//               ),
-//             ),
-//           ),
-//         );
-//   }
-// }

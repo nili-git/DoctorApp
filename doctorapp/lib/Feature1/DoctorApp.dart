@@ -10,6 +10,7 @@ class DoctorApp extends StatefulWidget {
 }
 
 class _DoctorAppState extends State<DoctorApp> {
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -17,7 +18,6 @@ class _DoctorAppState extends State<DoctorApp> {
    
       body:  SafeArea(
         child: SingleChildScrollView(
-         // physics: const NeverScrollableScrollPhysics(),
           child: Column(
             children: [
             SizedBox(
@@ -34,8 +34,13 @@ class _DoctorAppState extends State<DoctorApp> {
                     color: Colors.white,
                     fontSize: 20,fontWeight: FontWeight.bold),),
                 ],),
-                 const Icon(Icons.
-                 filter_list_rounded,color: Colors.white,),
+                 GestureDetector(
+                   onTap: () {
+                     showDialogWidget(context);
+                   },
+                   child: const Icon(Icons.
+                   filter_list_rounded,color: Colors.white,),
+                 ),
               ],
               ),
             ),
@@ -44,7 +49,6 @@ class _DoctorAppState extends State<DoctorApp> {
         
           Container(
           width: MediaQuery.of(context).size.width,
-          //height: MediaQuery.of(context).size.height ,
            decoration:  BoxDecoration(
            color: Colors.white,
             border:  Border.all( width: 1, color:  const Color.fromRGBO(36, 98, 127, 1),
@@ -57,11 +61,9 @@ class _DoctorAppState extends State<DoctorApp> {
          child: Padding(
            padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
            child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
              crossAxisAlignment: CrossAxisAlignment.start,
              children:  [
                 Container( 
-                 // height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                    decoration:  BoxDecoration(
                   border:  Border.all( width: 1, color:  const Color.fromRGBO(36, 98, 127, 1),
@@ -84,7 +86,6 @@ class _DoctorAppState extends State<DoctorApp> {
                   color:  Color.fromRGBO(36, 98, 127, 1),
                  fontWeight: FontWeight.bold,
                  fontSize: 18,),),
-               //SizedBox(height: 5),
               const Text(" Position",
                style:  TextStyle(
                color: Colors.grey,
@@ -141,9 +142,7 @@ class _DoctorAppState extends State<DoctorApp> {
                    Column(
             children:  [ 
               TimeCard(icon: Icons.delete, title: "Mon - Sat(08 - 30 \nAM - 09:00 PM", ),
-             // const SizedBox(height: 5,),
               TimeCard(icon: Icons.delete, title: "Mon - Sat(08 - 30 \nAM - 09:00 PM", ),
-              //const SizedBox(height: 5,),
               TimeCard(icon: Icons.delete, title: "Mon - Sat(08 - 30 \nAM - 09:00 PM", ),
               
               ],
@@ -154,7 +153,6 @@ class _DoctorAppState extends State<DoctorApp> {
                width: 250,
                child: MaterialButton(
                  onPressed: () {
-                   // Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentPage2(image: "assets/image2.svg", title: " Payment \n Sucessful!", des: " Thank you for Booking \n Appointment.", buttontitle: " UPCOMING APPOINTMENT",  )),);
                  },
 
                  color: const Color.fromRGBO(36, 98, 127, 1),
@@ -304,7 +302,6 @@ class DoctorPositionCard extends StatelessWidget {
       child: Container(
         height: MediaQuery.of(context).size.height* 0.15,                
         padding: const EdgeInsets.all(10),
-       //  margin: const EdgeInsets.all(3),
         decoration:  BoxDecoration(
           color: Colors.white,
            border: Border.all( 
@@ -322,7 +319,6 @@ class DoctorPositionCard extends StatelessWidget {
             
           children: [
             Container(
-             
               padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
              decoration:  BoxDecoration(
                color: const Color.fromRGBO(36, 98, 127, 1),
@@ -336,7 +332,6 @@ class DoctorPositionCard extends StatelessWidget {
              ),
              ),
              child: SvgPicture.asset(image,height: 15,width: 15, ),
-              //child: const Icon(Icons.person_sharp),
               ),
               const SizedBox( height: 25,),
                Text(title, style: const TextStyle( color: Colors.grey),
@@ -345,6 +340,100 @@ class DoctorPositionCard extends StatelessWidget {
       ),
         ),
        ),
+    );
+  }
+}
+
+showDialogWidget(BuildContext context) {
+  List data = [ "Message", " Add to Favourite", "Video Call", "Report this User", " Service only permit to the premium User", " Service only permit to the premium User",];
+  AlertDialog alert =  const AlertDialog(
+  );
+
+  showDialog(
+    context: context, 
+    builder: (BuildContext context){
+      return   AlertDialog(
+        backgroundColor:  const Color.fromRGBO(236, 247, 251, 1),
+         shape: const RoundedRectangleBorder(borderRadius: 
+         BorderRadius.all(Radius.circular(30))),
+        content: Container(
+          padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+          width: 400,
+          child:ListView.builder(
+          shrinkWrap: true,
+         itemCount: 6,
+         itemBuilder: (BuildContext context, int index) {
+        return  Padding(
+          padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+          child: Container(
+            height: 40,
+            color:  const Color.fromRGBO(255, 255, 255, 1),
+            child:  Column(
+              children: [
+                AlertListCard(title: data[index],),
+                ]),
+          ),
+        );
+      },
+    ),
+ ),
+        actions: [
+         Center(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                child: SizedBox(
+                 width: 200,
+                 child: MaterialButton(
+                   onPressed: () {
+                     Navigator.pop(context);
+                   },
+
+                   color: const Color.fromRGBO(36, 98, 127, 1),
+                   child:  const  Text("Back", style:  TextStyle(
+                     color: Colors.white, 
+                     fontWeight: FontWeight.bold),),
+                     shape:  RoundedRectangleBorder
+                     (
+                       borderRadius:  BorderRadius.circular(20.0),),
+                   ),
+                ),
+              ),
+            ),
+        ],
+      );
+    }
+    
+  );
+}
+
+class AlertListCard extends StatelessWidget {
+  String title;
+
+   AlertListCard({
+    Key? key, required this.title,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () {},
+       dense: true,
+       visualDensity: const VisualDensity(vertical: -3), 
+      shape: RoundedRectangleBorder(
+        side:const  BorderSide(
+        color:  Colors.grey, width: 0),
+         borderRadius: BorderRadius.circular(5)),
+        title:  Text(title, 
+      style: const TextStyle( 
+      color: Colors.grey,
+      fontWeight: FontWeight.bold,
+       fontSize: 10, ),),
+       
+       trailing: Container(
+        width: 40,
+        color: const Color.fromRGBO(236, 247, 251, 1),
+        child: const  Icon(Icons.arrow_forward, color: Color.fromRGBO(0, 191, 175, 1),)),
+     
     );
   }
 }
