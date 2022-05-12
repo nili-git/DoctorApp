@@ -62,7 +62,7 @@ class CameraWidgetState extends State{
                   child: Card(
                     shape: const RoundedRectangleBorder(
                        borderRadius:  BorderRadius.only(
-                   bottomLeft: Radius.circular(20.0),
+                      bottomLeft: Radius.circular(20.0),
                        bottomRight: Radius.circular(20.0),
                    ),
                      // borderRadius: BorderRadius.circular(12),

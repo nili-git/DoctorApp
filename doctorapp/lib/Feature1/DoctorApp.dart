@@ -424,10 +424,10 @@ class AlertListCard extends StatelessWidget {
         color:  Colors.grey, width: 0),
          borderRadius: BorderRadius.circular(5)),
         title:  Text(title, 
-      style: const TextStyle( 
-      color: Colors.grey,
-      fontWeight: FontWeight.bold,
-       fontSize: 10, ),),
+        style: const TextStyle( 
+        color: Colors.grey,
+        fontWeight: FontWeight.bold,
+         fontSize: 10, ),),
        
        trailing: Container(
         width: 40,
