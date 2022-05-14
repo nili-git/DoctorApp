@@ -1,3 +1,4 @@
+import 'package:doctorapp/Feature4/sharedpreferencepage.dart';
 import 'package:doctorapp/api3/controller2.dart';
 import 'package:doctorapp/api3/model2.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     //futureAlbum = _client.userserverrequest();
     super.initState();
+    // print("token is $token");
   }
 
   @override
@@ -296,14 +298,17 @@ class _LoginPageState extends State<LoginPage> {
                                 // }
                                 var data = {
                                   "countryCode": "977",
-                                  "phone": "9803610971",
-                                  "password": "admin1",
+                                  "phone": _userNameController.text,
+                                  "password": _passwordController.text,
                                   "deviceName": "",
                                   "deviceType": "",
                                   "deviceToken": ""
                                 };
-                                print(data);
-                                var res = await _client.loginData(data);
+                                //print(data);
+                                await _client.loginData(data);
+                                print("token is $token");
+                                // var token = token;
+                                //print(res);
                               },
                               color: const Color(0XFF4BB5CA),
                               child: const Text(
