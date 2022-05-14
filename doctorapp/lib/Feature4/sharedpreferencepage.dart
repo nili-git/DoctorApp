@@ -8,10 +8,10 @@ class HelperClass {
     pref.setString(label, value);
   }
 
-  Future<void> setBooleanToken(String label, value) async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setBool(label, value);
-  }
+  // Future<void> setBooleanToken(String label, value) async {
+  //   final SharedPreferences pref = await SharedPreferences.getInstance();
+  //   pref.setBool(label, value);
+  // }
 
   Future<void> getAllToken() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
